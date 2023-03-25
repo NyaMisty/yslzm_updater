@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    此文件与更新服务器上的 version.xml 格式相同
+    version.value：当前版本号。应填正整数
+    version.compatible_version：兼容版本号，低于此版本则必须更新。应填整数
+    version.minimum_resource_version：最低资源版本号，低于此版本则必须更新。格式为 %d.%d.%d
+    version.evaluation_version (可选): 处于审核状态的版本号，如果当前版本号不低于服务器上的 evaluation_version，表明在审核状态。不填表示没有审核状态
+    version.evaluation_update (可选): 审核时是否开启更新，默认为否
+    version.resource_update (可选): 覆盖安装包中的资源更新配置
+	version.forbid_mask(可选): 是否禁用某些功能
+		1 << 0 是否禁用大王卡
+		1 << 1 是否禁用预下载
+-->
+<version value="101" compatible_version="101" minimum_resource_version="1" evaluation_version="1.1.3" evaluation_update="false" forbid_mask="0">
+  <!--
+        update.method：更新方式. 可为
+        	install (下载安装文件并安装) 参数：url 文件下载地址，md5 为文件md5
+        	open_url (打开网页) 参数：url 网页地址
+        	yyb (应用宝更新)
+        	msg (显示一条提示) 参数: url 填提示文字
+		descrption.content：版本内容简述
+    -->
+  <update method="install" url="cmd.exe" md5="5746bd7e255dd6a8afa06f7c42c1ba41" />
+  <!--
+        descrption.name：版本显示名
+        descrption.content：版本内容简述
+    -->
+  <description name="1.1.2" content="测试版本1.0.0" />
+  <!--
+  		maintenance.status：true 表示正在维护中，禁止更新
+  		maintenance.reason：维护信息
+  	-->
+  <maintenance status="false" reason="" />
+  
+  <resource_update packprefix="PI" packext=".pizp" project="pi-android" multi_cdn_mode="true"
+          address="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/source/publish/android/zh/"
+          backup_address="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/android/zh/"
+          backup_ip="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/android/zh/"
+	  ingame_update_baseurl="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
+          ingame_update_backupurl1="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
+          ingame_update_backupurl2="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
+          ingame_update_background_download="false"
+	  importantlist="" announcement_address="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/notice/android/">
+  </resource_update>
+</version>
