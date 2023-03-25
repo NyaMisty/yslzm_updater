@@ -1,0 +1,189 @@
+//------------------------------------------------
+//--- 010 Editor v12.0.1 Binary Template
+//
+//      File: 
+//   Authors: 
+//   Version: 
+//   Purpose: 
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+BigEndian();
+
+
+
+typedef struct {
+    ubyte val <comment="varint element">;
+    local uint result = val;
+    if((val & 0x80) == 0) {
+        result = val & 0x7f;
+    } else if ((val & 0x40) == 0) {
+        ubyte val <comment="varint element">;
+        result = ((result & 0x3F) << 8) | val;
+    } else if ((val & 0x20) == 0) {
+        result = ((result & 0x1F));
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+    } else if ((val & 0x10) == 0) {
+        result = ((result & 0xF));
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+    } else {
+        result = 0;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+        ubyte val <comment="varint element">;
+        result <<= 8;
+        result |= val;
+    }
+} varint <read=VarintRead, comment="Unsigned little-endian base 128 value">;
+
+uint VarintValue(varint &u) {
+    return u.result;
+}
+
+string VarintRead(varint &u) {
+    local string s;
+    s = SPrintf(s, "0x%X", u.result);
+    return s;
+}
+
+struct BCFG {
+    struct BCFGHeader {
+        char magic[2];
+        uint16 defNum;
+        uint32 rowNum;
+        uint32 oriDataSize;
+        uint16 tailSize;
+        uint16 chunkNum;
+        uint32 tableId;
+    } bcfgHeader;
+
+    
+    local int oriDataPos = FTell();
+    //char oriData[bcfgHeader.oriDataSize];
+
+    FSeek(oriDataPos + bcfgHeader.oriDataSize);
+    struct Def {
+        varint defType;
+        varint namelen;
+        char name[VarintValue(namelen)];
+        varint varnum;
+        struct VarInfo {
+            varint vartype;
+            varint varNameLen;
+            char varName[VarintValue(varNameLen)];
+        } vars[VarintValue(varnum)] <optimize=false>;
+    } defs[bcfgHeader.defNum] <optimize=false>;
+
+    struct Row {
+        varint offsetId;
+        varint offsetValue;
+
+        local int i = 0;
+        local int rowDefI = 0;
+        //for (i = 0; i < bcfgHeader.defNum; i++) {
+        //    if (VarintValue(defs[i].defType) >= VarintValue(offsetId)) break;
+        //    rowDefI = i;
+        //}
+        local int oriPos = FTell();
+        FSeek(oriDataPos + VarintValue(offsetValue));
+        
+        for (i = 0; i < VarintValue(defs[rowDefI].varnum); i++) { // see doRowUnmarshalSimpleVar
+            struct RowValue {
+                local int vartype = VarintValue(defs[rowDefI].vars[i].vartype);
+                if (vartype == 0x10) {
+                    ubyte boolean; // boolean
+                } else if (vartype == 0x20) {
+                    short w; // int16
+                } else if (vartype == 0x30) {
+                    ushort w; // uint16
+                } else if (vartype == 0x40 || vartype == 0x50) {
+                    varint d; // int32 / uint32
+                } else if (vartype == 0x80) {
+                    float f;
+                } else if (vartype == 0x90) {
+                    varint slen;
+                    char s[VarintValue(slen)];
+                } else {
+                    if ((vartype & 0xF) == 0xF) {
+                        // list
+                        varint listLen;
+                        char data[VarintValue(listLen)];
+                    } else if ((vartype & 0xF0) == 0xA0) {
+                        // table (bean)
+                        varint beanlen;
+                        char bean[VarintValue(beanlen)];
+                    }
+                }
+            } rowValue <read=RowValueRead, optimize=false>;
+        }
+
+        FSeek(oriPos);
+    } rows[bcfgHeader.rowNum] <optimize=false>;
+
+    /*for (local int i = 0; i < bcfgHeader.rowNum; i++) {
+        struct RowData {
+            byte rows[i]
+        } rowData
+    }*/
+
+    /*struct unk2 {
+        byte namelen;
+        char name[namelen];
+        char unk[32];
+    } t2[bcfgHeader.rowNum] <optimize=false>;*/
+} bcfg;
+
+string RowValueRead(RowValue &u) {
+    local string s = "";
+    local int vartype = u.vartype;
+    if (vartype == 0x10) {
+        return SPrintf(s, "(bool) 0x%x", u.boolean);
+    } else if (vartype == 0x20) {
+        return SPrintf(s, "(int16) 0x%x", u.w);
+    } else if (vartype == 0x30) {
+        return SPrintf(s, "(uint16) 0x%x", u.w);
+    } else if (vartype == 0x40) {
+        return SPrintf(s, "(int32) 0x%x", VarintValue(u.d));
+    } else if (vartype == 0x50) {
+        return SPrintf(s, "(uint32) 0x%x", VarintValue(u.d));
+    } else if (vartype == 0x80) {
+        return SPrintf(s, "(float) %f", f);
+    } else if (vartype == 0x90) {
+        if (VarintValue(u.slen) > 0) {
+            return SPrintf(s, "(string) %s", u.s);
+        }
+        return SPrintf(s, "(string, empty)");
+    } else {
+        if ((vartype & 0xF) == 0xF) {  // 0xXF
+            // list
+            return SPrintf(s, "(list type 0x%x, length %d)", vartype, VarintValue(u.listLen));
+        } else if ((vartype & 0xF0) == 0xA0) { // 0xA0-0xAE
+            // table (bean)
+            return SPrintf(s, "(bean type 0x%x, length %d)", vartype, VarintValue(u.beanlen));
+        } else {
+            return SPrintf(s, "(invalid vartype %x)", vartype);
+        }
+    }
+}

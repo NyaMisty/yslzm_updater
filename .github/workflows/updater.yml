@@ -1,0 +1,92 @@
+name: YSLZM DirServer Updater
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+        required: false
+        default: false
+  repository_dispatch:
+  schedule:
+    - cron: "0 */4 * * *" # min hour day week year
+
+
+jobs:
+  build:
+    #### Build Matrix
+    # strategy:
+    #   matrix:
+    #     builder: [ghcr.io/nyamisty/altserver_builder_alpine_armv7, ghcr.io/nyamisty/altserver_builder_alpine_aarch64, ghcr.io/nyamisty/altserver_builder_alpine_amd64, ghcr.io/nyamisty/altserver_builder_alpine_i386]
+
+    runs-on: ubuntu-latest
+    steps:
+      ##########################################################
+      ###
+      ### XXX: Pre-init steps here
+      ###
+      ##########################################################
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      - name: Generate timestamp
+        id: timestamp # output: value
+        run: |
+          TIMESTAMP="$(date +"%Y%m%d")"
+          echo "Timestamp: ${TIMESTAMP}"
+          echo "::set-output name=value::${TIMESTAMP}"
+
+      ##########################################################
+      ###
+      ### XXX: Env-setup steps here
+      ###
+      ##########################################################
+      - name: Setup committer
+        run: |
+          git config --global user.email "gh-worker@misty.moe"
+          git config --global user.name "NyaMisty BuildWorker"
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+          architecture: x64
+
+      ##########################################################
+      ###
+      ### XXX: Pre-build steps here (checking, debugging)
+      ###
+      ##########################################################
+        
+      # Enable tmate debugging of manually-triggered workflows if the input option was provided
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+      
+
+      ##########################################################
+      ###
+      ### XXX: Main building steps here
+      ###
+      ##########################################################
+            
+      - name: Update version info
+        run: |
+            python3 yslzm_updater/yslzm_update_info.py zh-ios-ob-formal tc-projecti-zdir.zulong.com:52002
+            python3 yslzm_updater/yslzm_update_info.py zh-android-ob-formal tc-projecti-zdir.zulong.com:51002
+
+      - name: Commit everything
+        run: |
+            git add *-serverList.xml *-version.xml *-versionList.txt
+            if [ ! -z "$(git status --porcelain --untracked-files=no)" ]; then # has changes
+                git commit -a -m "AutoUpdate-${{ steps.timestamp.outputs.value }}"
+                git push
+            fi
+       
+
+      ### XXX: Keep alive cron-type workflows
+      - uses: gautamkrishnar/keepalive-workflow@master
