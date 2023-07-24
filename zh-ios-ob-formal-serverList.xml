@@ -89,5 +89,9 @@
     <server zoneid="1061" name="月下铃花" address="124.221.118.125" port="9227" weight="0" load="2" closed="false" hidden="false" new="false" evaluation="false" notice="服务器维护中。请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
     <server zoneid="1062" name="飞鸟归舍" address="111.231.5.57" port="9227" weight="100" load="2" closed="false" hidden="false" new="true" evaluation="false" notice="服务器维护中。请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
     <server zoneid="1063" name="星熠手记" address="110.42.247.157" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="服务器维护中。请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
+    <server zoneid="1064" name="醒梦花朝" address="118.25.26.50" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
+    <server zoneid="1065" name="日落星海" address="118.25.27.242" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
+    <server zoneid="1066" name="洒落砂糖" address="111.229.144.119" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
+    <server zoneid="1067" name="丽日纤云" address="111.229.36.129" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" area="0" crashed="false"/>
   </servergroup>
 </serverlist>
