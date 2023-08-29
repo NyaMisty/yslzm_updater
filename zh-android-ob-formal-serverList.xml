@@ -93,5 +93,8 @@
     <server zoneid="1065" name="日落星海" address="118.25.27.242" port="9227" weight="0" load="2" closed="false" hidden="false" new="false" evaluation="false" notice="服务器维护中，预计将于8月24日02:30开放。请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="您当前未获取测试资格，敬请期待正式版"/>
     <server zoneid="1066" name="洒落砂糖" address="111.229.144.119" port="9227" weight="100" load="2" closed="false" hidden="false" new="true" evaluation="false" notice="服务器维护中，预计将于8月24日02:30开放。请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="您当前未获取测试资格，敬请期待正式版"/>
     <server zoneid="1067" name="丽日纤云" address="111.229.36.129" port="9227" weight="0" load="1" closed="false" hidden="true" new="true" evaluation="false" notice="服务器维护中，预计将于8月24日02:30开放。请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="您当前未获取测试资格，敬请期待正式版"/>
+    <server zoneid="1068" name="烁光舞会" address="175.24.174.213" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1069" name="天光盛宴" address="101.34.254.225" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1070" name="芳菲初樱" address="101.43.6.110" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
   </servergroup>
 </serverlist>
