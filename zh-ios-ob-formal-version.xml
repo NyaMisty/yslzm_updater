@@ -11,7 +11,7 @@
 		1 << 0 是否禁用大王卡
 		1 << 1 是否禁用预下载
 -->
-<version value="101" compatible_version="101" minimum_resource_version="1" evaluation_version="1.6.9" evaluation_update="true" forbid_mask="0" disable_scan="true">
+<version value="101" compatible_version="101" minimum_resource_version="1" evaluation_version="1.7.0" evaluation_update="true" forbid_mask="0" disable_scan="true">
   <!--
         update.method：更新方式. 可为
         	install (下载安装文件并安装) 参数：url 文件下载地址，md5 为文件md5
