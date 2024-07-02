@@ -33,10 +33,10 @@
   <maintenance status="false" reason="" />
   
   <resource_update packprefix="PI" packext=".pizp" project="pi-android" multi_cdn_mode="true"
-          address="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/source/publish/android/zh/"
+          address="http://autopatch-projecti-tc-new.zulong.com/projectIgame_ob/source/publish/android/zh/"
           backup_address="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/android/zh/"
           backup_ip="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/android/zh/"
-	  ingame_update_baseurl="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
+	  ingame_update_baseurl="http://autopatch-projecti-tc-new.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
           ingame_update_backupurl1="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
           ingame_update_backupurl2="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
           ingame_update_background_download="false"

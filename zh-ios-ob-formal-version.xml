@@ -34,10 +34,10 @@
   <maintenance status="false" reason="" />
   
   <resource_update packprefix="PI" packext=".pizp" project="pi-ios" multi_cdn_mode="true" 
-          address="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/source/publish/ios/zh/"
+          address="http://autopatch-projecti-tc-new.zulong.com/projectIgame_ob/source/publish/ios/zh/"
           backup_address="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/ios/zh/"
           backup_ip="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/ios/zh/"
-          ingame_update_baseurl="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/source/publish/ios/b_file_list/"
+          ingame_update_baseurl="http://autopatch-projecti-tc-new.zulong.com/projectIgame_ob/source/publish/ios/b_file_list/"
           ingame_update_backupurl1="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/ios/b_file_list/"
           ingame_update_backupurl2="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/ios/b_file_list/"
           ingame_update_background_download="false"
