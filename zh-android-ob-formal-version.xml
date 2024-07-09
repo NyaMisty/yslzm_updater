@@ -40,6 +40,6 @@
           ingame_update_backupurl1="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
           ingame_update_backupurl2="http://autopatch-projecti-ks.zulong.com/projectIgame_ob/source/publish/android/b_file_list/"
           ingame_update_background_download="false"
-	  importantlist="" announcement_address="http://autopatch-projecti-tc.zulong.com/projectIgame_ob/notice/android/">
+	  importantlist="" announcement_address="http://autopatch-projecti-tc-new.zulong.com/projectIgame_ob/notice/android/">
   </resource_update>
 </version>
