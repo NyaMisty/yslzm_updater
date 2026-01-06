@@ -211,7 +211,10 @@
     <server zoneid="1160" name="光与夕鸟" address="111.229.43.164" port="9227" weight="0" load="2" closed="false" hidden="false" new="false" evaluation="false" notice="服务器维护中，请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="服务器维护中，请您耐心等待~"/>
   </servergroup>
   <servergroup name="闪亮17区" os="pc,iOS,Android,OpenHarmony" auth="auany" evaluation="false" accountwithzoneid="true" channel="zulong,ysuc,qq,wechat,bilibili" grc_url="https://tc-projecti-grc-lb.zulong.com" gda_url="https://gda.zulong.com" ssp_url="https://ssp-pi.zulong.com" first_opentime="0">
-    <server zoneid="1161" name="星之耀夜" address="43.142.137.57" port="9227" weight="100" load="2" closed="false" hidden="false" new="true" evaluation="false" notice="服务器维护中，请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="服务器维护中，请您耐心等待~"/>
-    <server zoneid="1162" name="弥夜晖光" address="111.229.87.146" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1161" name="星之耀夜" address="43.142.137.57" port="9227" weight="0" load="2" closed="false" hidden="false" new="false" evaluation="false" notice="服务器维护中，请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="服务器维护中，请您耐心等待~"/>
+    <server zoneid="1162" name="弥夜晖光" address="111.229.87.146" port="9227" weight="100" load="2" closed="false" hidden="false" new="true" evaluation="false" notice="服务器维护中，请您耐心等待~" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="服务器维护中，请您耐心等待~"/>
+    <server zoneid="1163" name="伴月清泉" address="101.34.152.42" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1164" name="月野漫步" address="49.235.129.40" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1165" name="纯白旅程" address="43.143.43.218" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
   </servergroup>
 </serverlist>
