@@ -213,5 +213,10 @@
     <server zoneid="1166" name="星辉流影" address="101.35.137.50" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
     <server zoneid="1167" name="真夏庭园" address="124.222.84.127" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
     <server zoneid="1168" name="初恋心情" address="121.4.53.189" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1169" name="纯白悸动" address="212.64.57.194" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+    <server zoneid="1170" name="砂糖魔法" address="42.192.22.55" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
+  </servergroup>
+  <servergroup name="闪亮18区" os="pc,iOS,Android,OpenHarmony" auth="auany" evaluation="false" accountwithzoneid="true" channel="zulong,ysuc,qq,wechat,bilibili" grc_url="https://tc-projecti-grc-lb.zulong.com" gda_url="https://gda.zulong.com" ssp_url="https://ssp-pi.zulong.com" first_opentime="0">
+    <server zoneid="1171" name="赤色云霓" address="106.54.46.23" port="9227" weight="0" load="1" closed="true" hidden="true" new="true" evaluation="false" notice="" is_center="0" nochannel="" support_multi_system_plats="false" non_white_account_tip="敬请期待"/>
   </servergroup>
 </serverlist>
