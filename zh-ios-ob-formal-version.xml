@@ -33,7 +33,7 @@
   	-->
   <maintenance status="false" reason="" />
   
-  <resource_update packprefix="PI" packext=".pizp" project="pi-ios" multi_cdn_mode="true" 
+  <resource_update packprefix="PI" packext=".pizp" project="pi-ios" multi_cdn_mode="true" disable_extra_package_background_download="true"
           address="http://autopatch-pigame-tc.zulong.com/projectIgame_ob/source/publish/ios/zh/"
           backup_address="http://autopatch-projecti-ali.zulong.com/projectIgame_ob/source/publish/ios/zh/"
           backup_ip="http://autopatch-projecti-hs.zulong.com/projectIgame_ob/source/publish/ios/zh/"
